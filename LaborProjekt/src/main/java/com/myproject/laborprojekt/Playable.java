@@ -10,4 +10,5 @@ package com.myproject.laborprojekt;
  */
 public interface Playable {
     void play();
+    double getBpm();
 }
