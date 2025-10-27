@@ -23,6 +23,10 @@ public class Playlist {
     public void addSong(Song song) {
         songs.add(song);
     }
+
+    public String getName() {
+        return name;
+    }
     
     public void PrintAll() {
         System.out.println("Playlist:" + name);

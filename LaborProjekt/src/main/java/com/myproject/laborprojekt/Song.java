@@ -11,19 +11,20 @@ package com.myproject.laborprojekt;
 public class Song extends SongBase {
 
     private String id;
+    private int popularity;
 
-    public Song(String id, String title, String artist, int duration, double bpm) {
-        super(title, artist, duration, bpm);
+    public Song(String id, String title, String artist, float duration, double bpm, int popularity) {
+        super(title, artist, duration, bpm, popularity);
         this.id = id;
+        this.popularity = popularity;
     }
 
     public String getId() {
         return id;
     }
-    
-    
+
     @Override
-    
+
     public void play() {
         System.out.println("Playing: " + getInfo());
     }

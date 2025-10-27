@@ -6,38 +6,50 @@ package com.myproject.laborprojekt;
 
 import java.util.List;
 
-/**
- *
- * @author istsz
- */
 public class PlaylistGenerator {
 
     public static Playlist generate(ExerciseType type) {
-        double targetBpm = 120;
+        double targetTempo;
+        int size = 10;
+        List<String> seeds = List.of("878dadea-33c5-4c08-bdb9-e2b117475a99"); // your valid seed
+
+        int minPopularity = 0;
+        int maxPopularity = 100;
 
         switch (type) {
             case RUNNING:
-                targetBpm = 130;
+                targetTempo = 130;
                 break;
             case HIIT:
-                targetBpm = 170;
+                targetTempo = 170;
                 break;
             case CARDIO:
-                targetBpm = 120;
+                targetTempo = 120;
                 break;
             case YOGA:
-                targetBpm = 80;
+                targetTempo = 80;
                 break;
             case WEIGHTLIFTING:
-                targetBpm = 110;
+                targetTempo = 110;
                 break;
-
+            default:
+                targetTempo = 120;
+                break;
         }
-        List <Song> songs = ApiService.getSongsByBpm(targetBpm);
-        
+
         Playlist playlist = new Playlist(type.name() + " Playlist");
-        for (Song s : songs) playlist.addSong(s);
+        List<Song> songs = ApiService.getSongsByTempo(targetTempo, seeds, size);
+
+        if (songs.isEmpty()) {
+            System.out.println("No songs found for this playlist.");
+        } else {
+            
+            for (Song s : songs) {
+
+                playlist.addSong(s);
+            }
+        }
+
         return playlist;
     }
-
 }

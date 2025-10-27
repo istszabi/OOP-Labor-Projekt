@@ -7,66 +7,83 @@ package com.myproject.laborprojekt;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import java.io.IOException;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
+import kong.unirest.HttpResponse;
+import kong.unirest.Unirest;
+
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author istsz
- */
 public class ApiService {
 
     private static final String API_URL = "https://api.reccobeats.com/v1/track/recommendation";
-    
-    public static List<Song> getSongsByBpm(double bpm) {
+
+    public static List<Song> getSongsByTempo(double tempo, List<String> seeds, int size) {
         List<Song> songs = new ArrayList<>();
-        int bpmInt = (int) Math.round(bpm);
+
         try {
-            String url = API_URL + "?bpm=" + bpmInt + "&limit=10";
-            HttpClient client = HttpClient.newHttpClient();
+            Unirest.config().reset();
+            Unirest.config().connectTimeout(0).socketTimeout(0);
 
-            HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create(url))
-                    .GET()
-                    .build();
-            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            String seedParam = String.join(",", seeds);
+            String url = API_URL + "?tempo=" + tempo + "&size=" + size + "&seeds=" + seedParam;
 
-            if (response.statusCode() == 200) {
-                JsonObject json = new Gson().fromJson(response.body(), JsonObject.class);
-                JsonArray data = json.getAsJsonArray("data");
+            HttpResponse<String> response = Unirest.get(url)
+                    .header("Accept", "application/json")
+                    .asString();
 
-                for (int i = 0; i < data.size(); i++) {
-                    JsonObject obj = data.get(i).getAsJsonObject();
-                    
-                    String id = obj.has("id") && !obj.get("id").isJsonNull() ? obj.get("id").getAsString() : "N/A";
-                    
-                    String title = obj.get("trackTitle").getAsString();
-                    
-                    
-                    JsonArray artistsArray = obj.getAsJsonArray("artists");
-                    String artist = (artistsArray.size() > 0) ? artistsArray.get(0).getAsJsonObject().get("name").getAsString() : "Unknown";
+            if (response.getStatus() == 200) {
+                JsonObject json = new Gson().fromJson(response.getBody(), JsonObject.class);
 
-                    int duration = obj.has("durationMs") ? obj.get("durationMs").getAsInt() / 1000 : 180;
+                if (json.has("content") && json.get("content").isJsonArray()) {
+                    JsonArray content = json.getAsJsonArray("content");
 
-                    double songBpm = obj.has("tempo") ? obj.get("tempo").getAsDouble() : bpmInt;
+                    for (int i = 0; i < content.size(); i++) {
+                        JsonObject obj = content.get(i).getAsJsonObject();
 
-                    Song song = new Song(id, title, artist, duration, songBpm);
-                    songs.add(song);
+                        String title = obj.has("trackTitle") && !obj.get("trackTitle").isJsonNull()
+                                ? obj.get("trackTitle").getAsString()
+                                : "Unknown Title";
+
+                        String artist = "Unknown";
+                        if (obj.has("artists") && obj.get("artists").isJsonArray()) {
+                            JsonArray artistsArray = obj.getAsJsonArray("artists");
+                            if (artistsArray.size() > 0 && artistsArray.get(0).isJsonObject()) {
+                                JsonObject artistObj = artistsArray.get(0).getAsJsonObject();
+                                if (artistObj.has("name") && !artistObj.get("name").isJsonNull()) {
+                                    artist = artistObj.get("name").getAsString();
+                                }
+                            }
+                        }
+
+                        double songTempo = tempo;
+                        float energy = 0.5f; // default
+
+                        if (obj.has("tempo") && !obj.get("tempo").isJsonNull()) {
+                            songTempo = obj.get("tempo").getAsDouble();
+                        }
+                       int popularity = 50; // default
+                        if (obj.has("popularity") && !obj.get("popularity").isJsonNull()) {
+                            popularity = obj.get("popularity").getAsInt();
+                        }
+
+                        float duration = 0f;
+                        if (obj.has("durationMs") && !obj.get("durationMs").isJsonNull()) {
+                            duration = obj.get("durationMs").getAsFloat() / 1000f / 60f;
+                        }
+                        songs.add(new Song(null, title, artist, duration, songTempo, popularity));
+
+                    }
+                } else {
+                    System.out.println("No 'content' array in response.");
                 }
-                
             } else {
-                System.out.println("API hiba:" + response.statusCode());
+                System.out.println("API error: " + response.getStatus());
             }
 
-        }
-        catch (IOException | InterruptedException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
+
         return songs;
     }
 }
