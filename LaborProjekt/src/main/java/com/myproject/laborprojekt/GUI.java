@@ -27,7 +27,7 @@ public class GUI extends javax.swing.JFrame {
      */
     public GUI() {
         initComponents();
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{
+        workoutSelectComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{
             "RUNNING", "HIIT", "CARDIO", "YOGA", "WEIGHTLIFTING"
         }));
         jProgressBar1.setVisible(false);
@@ -44,22 +44,23 @@ public class GUI extends javax.swing.JFrame {
 
         jProgressBar1 = new javax.swing.JProgressBar();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        workoutSelectComboBox = new javax.swing.JComboBox<>();
+        playlistGeneratorButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jTextField1 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
+        SortAZButton = new javax.swing.JButton();
+        SortDescPopButton = new javax.swing.JButton();
+        SortUndoButton = new javax.swing.JButton();
+        clearButton = new javax.swing.JButton();
+        saveToTxtButton = new javax.swing.JButton();
+        loadFromTxtButton = new javax.swing.JButton();
+        SortDescBPMButton = new javax.swing.JButton();
+        SortZAButton = new javax.swing.JButton();
+        SortAscPopButton = new javax.swing.JButton();
+        SortAscBPMButton = new javax.swing.JButton();
+        randomSongButton = new javax.swing.JButton();
+        searchSongButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 0, 51));
@@ -69,18 +70,19 @@ public class GUI extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Copperplate Gothic Bold", 2, 12)); // NOI18N
         jLabel1.setText("Workout Type:");
 
-        jComboBox1.setFont(new java.awt.Font("Perpetua", 0, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        workoutSelectComboBox.setFont(new java.awt.Font("Perpetua", 0, 12)); // NOI18N
+        workoutSelectComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        workoutSelectComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                workoutSelectComboBoxActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Generate Playlist");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        playlistGeneratorButton.setText("Generate Playlist");
+        playlistGeneratorButton.setName("playlistGenerateButton"); // NOI18N
+        playlistGeneratorButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                playlistGeneratorButtonActionPerformed(evt);
             }
         });
 
@@ -96,87 +98,90 @@ public class GUI extends javax.swing.JFrame {
                 jTextField1MouseClicked(evt);
             }
         });
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+
+        SortAZButton.setText("Sort A-Z");
+        SortAZButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                SortAZButtonActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Sort A-Z");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        SortDescPopButton.setText("Sort by Desc. Popularity");
+        SortDescPopButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                SortDescPopButtonActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Sort by Desc. Popularity");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        SortUndoButton.setText("Undo Sorting");
+        SortUndoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                SortUndoButtonActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Undo Sorting");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        clearButton.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        clearButton.setText("Clear");
+        clearButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                clearButtonActionPerformed(evt);
             }
         });
 
-        jButton5.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        jButton5.setText("Clear");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        saveToTxtButton.setText("Save playlist to TXT");
+        saveToTxtButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                saveToTxtButtonActionPerformed(evt);
             }
         });
 
-        jButton6.setText("Save playlist to TXT");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        loadFromTxtButton.setText("Load from TXT");
+        loadFromTxtButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                loadFromTxtButtonActionPerformed(evt);
             }
         });
 
-        jButton7.setText("Load from TXT");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        SortDescBPMButton.setText("Sort by Desc. BPM");
+        SortDescBPMButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                SortDescBPMButtonActionPerformed(evt);
             }
         });
 
-        jButton8.setText("Sort by Desc. BPM");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        SortZAButton.setText("Sort Z-A");
+        SortZAButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                SortZAButtonActionPerformed(evt);
             }
         });
 
-        jButton9.setText("Sort Z-A");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        SortAscPopButton.setText("Sort by Asc. Popularity");
+        SortAscPopButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                SortAscPopButtonActionPerformed(evt);
             }
         });
 
-        jButton10.setText("Sort by Asc. Popularity");
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
+        SortAscBPMButton.setText("Sort by Asc. BPM");
+        SortAscBPMButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
+                SortAscBPMButtonActionPerformed(evt);
             }
         });
 
-        jButton11.setText("Sort by Asc. BPM");
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
+        randomSongButton.setText("Choose Random Song");
+        randomSongButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
+                randomSongButtonActionPerformed(evt);
             }
         });
 
-        jButton12.setText("Choose Random Song");
-        jButton12.addActionListener(new java.awt.event.ActionListener() {
+        searchSongButton.setText("Search Song");
+        searchSongButton.setName("songSearchButton"); // NOI18N
+        searchSongButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton12ActionPerformed(evt);
+                searchSongButtonActionPerformed(evt);
             }
         });
 
@@ -187,44 +192,45 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 941, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(44, 44, 44)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(397, 397, 397)
+                                .addComponent(workoutSelectComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
                                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(37, 37, 37)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(playlistGeneratorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButton9)
+                                        .addComponent(SortZAButton)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(SortDescPopButton, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(SortDescBPMButton, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton5))
+                                        .addComponent(clearButton))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButton2)
+                                        .addComponent(SortAZButton)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(SortAscPopButton, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(SortAscBPMButton, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(191, 191, 191)
-                                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(saveToTxtButton, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(192, 192, 192)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(loadFromTxtButton, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(SortUndoButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 941, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(randomSongButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(searchSongButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -232,52 +238,49 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
+                        .addGap(9, 9, 9)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-                            .addComponent(jTextField1)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBox1)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(88, 88, 88)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(workoutSelectComboBox)
+                                .addComponent(jTextField1)
+                                .addComponent(playlistGeneratorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(searchSongButton))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(86, 86, 86)
                         .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton12)))
+                        .addComponent(randomSongButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2)
-                    .addComponent(jButton10)
-                    .addComponent(jButton11)
-                    .addComponent(jButton6)
-                    .addComponent(jButton7))
+                    .addComponent(SortAZButton)
+                    .addComponent(SortAscPopButton)
+                    .addComponent(SortAscBPMButton)
+                    .addComponent(saveToTxtButton)
+                    .addComponent(loadFromTxtButton))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton3)
-                        .addComponent(jButton8)
-                        .addComponent(jButton9))
-                    .addComponent(jButton4)
-                    .addComponent(jButton5))
+                        .addComponent(SortDescPopButton)
+                        .addComponent(SortDescBPMButton)
+                        .addComponent(SortZAButton))
+                    .addComponent(SortUndoButton)
+                    .addComponent(clearButton))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void workoutSelectComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_workoutSelectComboBoxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_workoutSelectComboBoxActionPerformed
+    // Playlist generating
+    private void playlistGeneratorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playlistGeneratorButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-        workoutType = (String) jComboBox1.getSelectedItem();
+        workoutType = (String) workoutSelectComboBox.getSelectedItem();
 
         int size;
 
@@ -292,8 +295,7 @@ public class GUI extends javax.swing.JFrame {
         jProgressBar1.setMinimum(0);
         jProgressBar1.setMaximum(size);
         jProgressBar1.setValue(0);
-        
-        
+
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -335,16 +337,32 @@ public class GUI extends javax.swing.JFrame {
                     List<Song> newSongs = ApiService.getSongsByTempo(targetTempo, List.of(seed), 1);
 
                     if (!newSongs.isEmpty()) {
-                        songs.add(newSongs.get(0));
+                        Song candidate = newSongs.get(0);
 
-                        // progress bar 
-                        final int progress = songs.size();
-                        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-                            @Override
-                            public void run() {
-                                jProgressBar1.setValue(progress);
+                        boolean duplicateSong = false;
+
+                        for (Song s : songs) {
+                            if (s.getTitle().equals(candidate.getTitle()) && s.getArtist().equals(candidate.getArtist())) {
+                                duplicateSong = true;
+                                break;
                             }
-                        });
+                        }
+                        if (!duplicateSong) {
+                            songs.add(candidate);
+
+                            // progress bar 
+                            final int progress = songs.size();
+                            javax.swing.SwingUtilities.invokeLater(new Runnable() {
+                                @Override
+                                public void run() {
+                                    jProgressBar1.setValue(progress);
+                                }
+                            });
+                        } else {
+                            i--;
+                            continue;
+
+                        }
 
                     } else {
                         int choice = javax.swing.JOptionPane.showConfirmDialog(
@@ -373,17 +391,13 @@ public class GUI extends javax.swing.JFrame {
             }
         }).start();
 
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
+    }//GEN-LAST:event_playlistGeneratorButtonActionPerformed
+        
     private void jTextField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MouseClicked
         jTextField1.setText("");
     }//GEN-LAST:event_jTextField1MouseClicked
     // A-Z Sort
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void SortAZButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SortAZButtonActionPerformed
         if (songs != null && !songs.isEmpty()) {
             songs.sort(new Comparator<Song>() {
                 @Override
@@ -395,9 +409,9 @@ public class GUI extends javax.swing.JFrame {
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "Nothing to sort!", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_SortAZButtonActionPerformed
     // Popularity sort Desc.
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void SortDescPopButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SortDescPopButtonActionPerformed
         if (songs != null && !songs.isEmpty()) {
             songs.sort(new Comparator<Song>() {
                 @Override
@@ -409,18 +423,18 @@ public class GUI extends javax.swing.JFrame {
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "Nothing to sort!", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_SortDescPopButtonActionPerformed
+    // Undo sorting
+    private void SortUndoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SortUndoButtonActionPerformed
         if (originalSongs == null || originalSongs.isEmpty()) {
             javax.swing.JOptionPane.showMessageDialog(this, "Nothing to undo!", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
             return;
         }
         songs = new ArrayList<>(originalSongs);
         updateOutputArea();
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_SortUndoButtonActionPerformed
+    // Clear screen
+    private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
         if (songs == null || songs.isEmpty()) {
             javax.swing.JOptionPane.showMessageDialog(this, "Nothing to clear!", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
             return;
@@ -428,9 +442,9 @@ public class GUI extends javax.swing.JFrame {
         jTextArea1.setText("");
         songs = new ArrayList<>();
         originalSongs = new ArrayList<>();
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_clearButtonActionPerformed
+    // Save to TXT
+    private void saveToTxtButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveToTxtButtonActionPerformed
         if (songs == null || songs.isEmpty()) {
             javax.swing.JOptionPane.showMessageDialog(
                     this,
@@ -447,9 +461,9 @@ public class GUI extends javax.swing.JFrame {
         } catch (Exception ex) {
             javax.swing.JOptionPane.showMessageDialog(this, "Error saving playlist: " + ex.getMessage(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_saveToTxtButtonActionPerformed
+    /////// Load from TXT ////////
+    private void loadFromTxtButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadFromTxtButtonActionPerformed
         /*//if (workoutType == null || workoutType.isEmpty()) {
             //javax.swing.JOptionPane.showMessageDialog(this, "No workout type selected!", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
           //  return;
@@ -469,9 +483,9 @@ public class GUI extends javax.swing.JFrame {
     } catch (Exception e) {
         javax.swing.JOptionPane.showMessageDialog(this, "Error loading file: " + e.getMessage(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
 }*/
-    }//GEN-LAST:event_jButton7ActionPerformed
-    // Novekvo BPM sort //
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_loadFromTxtButtonActionPerformed
+    // Desc BPM sort //
+    private void SortDescBPMButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SortDescBPMButtonActionPerformed
         if (songs == null || songs.isEmpty()) {
             javax.swing.JOptionPane.showMessageDialog(this, "Nothing to sort!", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
             return;
@@ -485,9 +499,9 @@ public class GUI extends javax.swing.JFrame {
         });
 
         updateOutputArea();
-    }//GEN-LAST:event_jButton8ActionPerformed
-    // Csokkeno BPM sort //
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+    }//GEN-LAST:event_SortDescBPMButtonActionPerformed
+    // Asc BPM sort //
+    private void SortAscBPMButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SortAscBPMButtonActionPerformed
         if (songs == null || songs.isEmpty()) {
             javax.swing.JOptionPane.showMessageDialog(this, "Nothing to sort!", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
             return;
@@ -501,9 +515,9 @@ public class GUI extends javax.swing.JFrame {
         });
 
         updateOutputArea();
-    }//GEN-LAST:event_jButton11ActionPerformed
+    }//GEN-LAST:event_SortAscBPMButtonActionPerformed
     // Popularity sort Asc. // 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+    private void SortAscPopButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SortAscPopButtonActionPerformed
         if (songs != null && !songs.isEmpty()) {
             songs.sort(new Comparator<Song>() {
                 @Override
@@ -515,9 +529,9 @@ public class GUI extends javax.swing.JFrame {
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "Nothing to sort!", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_jButton10ActionPerformed
+    }//GEN-LAST:event_SortAscPopButtonActionPerformed
     // Z-A Sort
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+    private void SortZAButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SortZAButtonActionPerformed
         if (songs != null && !songs.isEmpty()) {
             songs.sort(new Comparator<Song>() {
                 @Override
@@ -529,20 +543,103 @@ public class GUI extends javax.swing.JFrame {
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "Nothing to sort!", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_jButton9ActionPerformed
-
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+    }//GEN-LAST:event_SortZAButtonActionPerformed
+    // Random Song
+    private void randomSongButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_randomSongButtonActionPerformed
         if (songs == null || songs.isEmpty()) {
             javax.swing.JOptionPane.showMessageDialog(this, "No songs to play!", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
             return;
         }
         int rand = (int) (Math.random() * songs.size());
         Song randomSong = songs.get(rand);
-        
+
         randomSong.play();
-        
+
         javax.swing.JOptionPane.showMessageDialog(this, "Playing: \n" + randomSong.getInfo(), "Choose Random Song", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_jButton12ActionPerformed
+    }//GEN-LAST:event_randomSongButtonActionPerformed
+    // Search Song
+    private void searchSongButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchSongButtonActionPerformed
+        if (songs == null || songs.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "No songs available to search!", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        String[] searchOptions = {"BPM", "Popularity", "Artist", "Title"};
+        int choice = javax.swing.JOptionPane.showOptionDialog(this, "Search by:", "Search song", javax.swing.JOptionPane.DEFAULT_OPTION, javax.swing.JOptionPane.QUESTION_MESSAGE, null, searchOptions, searchOptions[0]);
+
+        if (choice == -1) {
+            return;
+        }
+
+        String input = javax.swing.JOptionPane.showInputDialog(this, "Enter value:");
+
+        if (input == null || input.isEmpty()) {
+            return;
+        }
+
+        List<Song> found = new ArrayList<>();
+
+        switch (choice) {
+            case 0: // BPM
+                try {
+                    double bpm = Double.parseDouble(input);
+                    for (Song s : songs) {
+                        if ((int) Math.round(s.getBpm()) == (int) Math.round(bpm)) {
+                            found.add(s);
+                        }
+                    }
+                } catch (NumberFormatException e) {
+                    javax.swing.JOptionPane.showMessageDialog(this, "Invalid BPM value!", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                break;
+
+            case 1: // Popularity
+                try {
+                    int pop = Integer.parseInt(input);
+                    for (Song s : songs) {
+                        if (s.getPopularity() == pop) {
+                            found.add(s);
+                        }
+                    }
+                } catch (NumberFormatException e) {
+                    javax.swing.JOptionPane.showMessageDialog(this, "Invalid popularity value!", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                break;
+
+            case 2: // Artist
+                for (Song s : songs) {
+                    if (s.getArtist().equalsIgnoreCase(input)) {
+                        found.add(s);
+                    }
+                }
+                break;
+
+            case 3: // Title
+                for (Song s : songs) {
+                    if (s.getTitle().equalsIgnoreCase(input)) {
+                        found.add(s);
+                    }
+                }
+                break;
+
+            default:
+                return;
+        }
+
+        if (found.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "No songs found!", "Search Result", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            String text = "=== Search Results ===\n\n";
+            for (Song s : found) {
+                text = text + s.getInfo() + "\n";
+            }
+            javax.swing.JOptionPane.showMessageDialog(this, text, "Search Result", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        }
+
+
+    }//GEN-LAST:event_searchSongButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -554,6 +651,7 @@ public class GUI extends javax.swing.JFrame {
         }
         text += "\nTotal songs: " + songs.size();
         jTextArea1.setText(text);
+        jTextArea1.setCaretPosition(0);
 
     }
 
@@ -582,33 +680,34 @@ public class GUI extends javax.swing.JFrame {
 
         //</editor-fold>
         /* Create and display the form */
-        /*java.awt.EventQueue.invokeLater(new Runnable() {
+ /*java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
                 new GUI().setVisible(true);
             }
         });
-*/    
-}
+         */
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton SortAZButton;
+    private javax.swing.JButton SortAscBPMButton;
+    private javax.swing.JButton SortAscPopButton;
+    private javax.swing.JButton SortDescBPMButton;
+    private javax.swing.JButton SortDescPopButton;
+    private javax.swing.JButton SortUndoButton;
+    private javax.swing.JButton SortZAButton;
+    private javax.swing.JButton clearButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton loadFromTxtButton;
+    private javax.swing.JButton playlistGeneratorButton;
+    private javax.swing.JButton randomSongButton;
+    private javax.swing.JButton saveToTxtButton;
+    private javax.swing.JButton searchSongButton;
+    private javax.swing.JComboBox<String> workoutSelectComboBox;
     // End of variables declaration//GEN-END:variables
 }
