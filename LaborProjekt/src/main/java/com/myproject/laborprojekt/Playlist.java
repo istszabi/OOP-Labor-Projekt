@@ -19,7 +19,7 @@ public class Playlist {
     public Playlist(String name) {
         this.name = name;
     }
-    
+
     public void addSong(Song song) {
         songs.add(song);
     }
@@ -27,14 +27,17 @@ public class Playlist {
     public String getName() {
         return name;
     }
-    
+
+    public List<Song> getSongs() {
+        return songs;
+    }
+
     public void PrintAll() {
         System.out.println("Playlist:" + name);
-        for (Song s : songs) {
+        for (int i = 0; i < songs.size(); i++) {
+            Song s = songs.get(i);
             System.out.println(" - " + s.getInfo());
         }
     }
-    
-    
-}
 
+}

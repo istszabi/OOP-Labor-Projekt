@@ -44,12 +44,13 @@ public abstract class SongBase implements Playable {
         return popularity;
     }
 
-    
-
     public String getInfo() {
-    int minutes = (int) duration;
-    int seconds = (int) ((duration - minutes) * 60); // fraction to seconds
-    return String.format("%s - %s (%d:%02d min, %.1f BPM, %d popularity)", title, artist, minutes, seconds, bpm, popularity);
-}
+        int totalSeconds = (int)Math.round(duration * 60);
+        int minutes = totalSeconds / 60;
+        int seconds = totalSeconds % 60;
+        double roundedBpm = Math.round(bpm);
+        return String.format("%s - %s (%d:%02d min, %.1f BPM, popularity: %d)",
+                title, artist, minutes, seconds, roundedBpm, popularity);
+    }
 
 }

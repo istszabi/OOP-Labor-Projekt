@@ -4,14 +4,9 @@
  */
 package com.myproject.laborprojekt;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import kong.unirest.HttpResponse;
-import kong.unirest.Unirest;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import com.google.gson.*;
+import kong.unirest.*;
 
 public class ApiService {
 
@@ -19,69 +14,31 @@ public class ApiService {
 
     public static List<Song> getSongsByTempo(double tempo, List<String> seeds, int size) {
         List<Song> songs = new ArrayList<>();
-
         try {
-            Unirest.config().reset();
-            Unirest.config().connectTimeout(0).socketTimeout(0);
+            String url = API_URL + "?tempo=" + tempo + "&size=" + size + "&seeds=" + String.join(",", seeds);
+            String body = Unirest.get(url).asString().getBody();
+            JsonArray content = JsonParser.parseString(body).getAsJsonObject().getAsJsonArray("content");
 
-            String seedParam = String.join(",", seeds);
-            String url = API_URL + "?tempo=" + tempo + "&size=" + size + "&seeds=" + seedParam;
+            for (JsonElement trackElement : content) {
+                JsonObject trackObject = trackElement.getAsJsonObject();
 
-            HttpResponse<String> response = Unirest.get(url)
-                    .header("Accept", "application/json")
-                    .asString();
+                String title = trackObject.has("trackTitle") ? trackObject.get("trackTitle").getAsString() : "Unknown Title";
 
-            if (response.getStatus() == 200) {
-                JsonObject json = new Gson().fromJson(response.getBody(), JsonObject.class);
-
-                if (json.has("content") && json.get("content").isJsonArray()) {
-                    JsonArray content = json.getAsJsonArray("content");
-
-                    for (int i = 0; i < content.size(); i++) {
-                        JsonObject obj = content.get(i).getAsJsonObject();
-
-                        String title = obj.has("trackTitle") && !obj.get("trackTitle").isJsonNull()
-                                ? obj.get("trackTitle").getAsString()
-                                : "Unknown Title";
-
-                        String artist = "Unknown";
-                        if (obj.has("artists") && obj.get("artists").isJsonArray()) {
-                            JsonArray artistsArray = obj.getAsJsonArray("artists");
-                            if (artistsArray.size() > 0 && artistsArray.get(0).isJsonObject()) {
-                                JsonObject artistObj = artistsArray.get(0).getAsJsonObject();
-                                if (artistObj.has("name") && !artistObj.get("name").isJsonNull()) {
-                                    artist = artistObj.get("name").getAsString();
-                                }
-                            }
-                        }
-
-                        double songTempo = tempo;
-                        float energy = 0.5f; // default
-
-                        if (obj.has("tempo") && !obj.get("tempo").isJsonNull()) {
-                            songTempo = obj.get("tempo").getAsDouble();
-                        }
-                       int popularity = 50; // default
-                        if (obj.has("popularity") && !obj.get("popularity").isJsonNull()) {
-                            popularity = obj.get("popularity").getAsInt();
-                        }
-
-                        float duration = 0f;
-                        if (obj.has("durationMs") && !obj.get("durationMs").isJsonNull()) {
-                            duration = obj.get("durationMs").getAsFloat() / 1000f / 60f;
-                        }
-                        songs.add(new Song(null, title, artist, duration, songTempo, popularity));
-
-                    }
-                } else {
-                    System.out.println("No 'content' array in response.");
+                String artist = "Unknown Artist";
+                if (trackObject.has("artists") && trackObject.getAsJsonArray("artists").size() > 0) {
+                    try { 
+                        artist = trackObject.getAsJsonArray("artists").get(0).getAsJsonObject().get("name").getAsString(); } catch(Exception ignored) {}
                 }
-            } else {
-                System.out.println("API error: " + response.getStatus());
+
+                double songTempo = trackObject.has("tempo") ? trackObject.get("tempo").getAsDouble() : tempo;
+                int popularity = trackObject.has("popularity") ? trackObject.get("popularity").getAsInt() : 50;
+                float duration = trackObject.has("durationMs") ? (float)(trackObject.get("durationMs").getAsDouble() / 60000) : 0;
+
+                songs.add(new Song(null, title, artist, duration, songTempo, popularity));
             }
 
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception ex) {
+            System.out.println("Hiba az API-nal: " + ex.getMessage());
         }
 
         return songs;

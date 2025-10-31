@@ -8,34 +8,39 @@ import java.util.List;
 
 public class PlaylistGenerator {
 
-    public static Playlist generate(ExerciseType type) {
-        double targetTempo;
-        int size = 10;
-        List<String> seeds = List.of("878dadea-33c5-4c08-bdb9-e2b117475a99"); // your valid seed
+    public static Playlist generate(ExerciseType type, int size) {
+        List<String> seeds = List.of("878dadea-33c5-4c08-bdb9-e2b117475a99");
 
-        int minPopularity = 0;
-        int maxPopularity = 100;
+        double minTempo, maxTempo;
 
         switch (type) {
             case RUNNING:
-                targetTempo = 130;
+                minTempo = 125;
+                maxTempo = 135;
                 break;
             case HIIT:
-                targetTempo = 170;
+                minTempo = 165;
+                maxTempo = 175;
                 break;
             case CARDIO:
-                targetTempo = 120;
+                minTempo = 115;
+                maxTempo = 125;
                 break;
             case YOGA:
-                targetTempo = 80;
+                minTempo = 75;
+                maxTempo = 85;
                 break;
             case WEIGHTLIFTING:
-                targetTempo = 110;
+                minTempo = 105;
+                maxTempo = 115;
                 break;
             default:
-                targetTempo = 120;
+                minTempo = 100;
+                maxTempo = 120;
                 break;
         }
+
+        double targetTempo = minTempo + Math.random() * (maxTempo - minTempo);
 
         Playlist playlist = new Playlist(type.name() + " Playlist");
         List<Song> songs = ApiService.getSongsByTempo(targetTempo, seeds, size);
@@ -43,9 +48,8 @@ public class PlaylistGenerator {
         if (songs.isEmpty()) {
             System.out.println("No songs found for this playlist.");
         } else {
-            
-            for (Song s : songs) {
-
+            for (int i = 0; i < songs.size(); i++) {
+                Song s = songs.get(i);
                 playlist.addSong(s);
             }
         }

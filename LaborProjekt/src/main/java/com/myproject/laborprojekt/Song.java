@@ -26,7 +26,7 @@ public class Song extends SongBase {
     @Override
 
     public void play() {
-        System.out.println("Playing: " + getInfo());
+        // System.out.println("Playing: " + getInfo());
     }
 
 }
