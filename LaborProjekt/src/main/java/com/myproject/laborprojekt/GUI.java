@@ -29,6 +29,7 @@ public class GUI extends javax.swing.JFrame {
             "RUNNING", "HIIT", "CARDIO", "YOGA", "WEIGHTLIFTING"
         }));
         jProgressBar1.setVisible(false);
+        
     }
 
     /**
@@ -63,7 +64,8 @@ public class GUI extends javax.swing.JFrame {
         SortDescDurButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(204, 0, 51));
+        setBackground(new java.awt.Color(0, 0, 0));
+        setForeground(new java.awt.Color(0, 0, 0));
 
         jProgressBar1.setForeground(new java.awt.Color(51, 204, 0));
 
@@ -174,8 +176,10 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        searchSongButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         searchSongButton.setText("Search Song");
         searchSongButton.setName("songSearchButton"); // NOI18N
+        searchSongButton.setPreferredSize(new java.awt.Dimension(120, 27));
         searchSongButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchSongButtonActionPerformed(evt);
@@ -183,6 +187,8 @@ public class GUI extends javax.swing.JFrame {
         });
 
         SortAscDurButton.setText("Sort by Asc. Duration");
+        SortAscDurButton.setMaximumSize(new java.awt.Dimension(152, 27));
+        SortAscDurButton.setMinimumSize(new java.awt.Dimension(152, 27));
         SortAscDurButton.setPreferredSize(new java.awt.Dimension(152, 27));
         SortAscDurButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -230,8 +236,8 @@ public class GUI extends javax.swing.JFrame {
                                         .addComponent(SortAscBPMButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(SortAscDurButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(SortDescDurButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(SortDescDurButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(SortAscDurButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(saveToTxtButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -259,8 +265,8 @@ public class GUI extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(workoutSelectComboBox)
                                 .addComponent(jTextField1)
-                                .addComponent(playlistGeneratorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(searchSongButton))
+                                .addComponent(playlistGeneratorButton)
+                                .addComponent(searchSongButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(86, 86, 86)
                         .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -287,7 +293,7 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(SortDescDurButton))
                     .addComponent(SortUndoButton)
                     .addComponent(clearButton))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -305,7 +311,7 @@ public class GUI extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(this, "Invalid playlist size!", "Warning", javax.swing.JOptionPane.ERROR_MESSAGE);
             return;
         }
-
+        jTextArea1.setText("Loading playlist...");
         jProgressBar1.setVisible(true);
         jProgressBar1.setMinimum(0);
         jProgressBar1.setMaximum(size);
@@ -371,6 +377,7 @@ public class GUI extends javax.swing.JFrame {
                                 @Override
                                 public void run() {
                                     jProgressBar1.setValue(progress);
+                                     jTextArea1.setText("Loading playlist... " + progress + "/" + size);
                                 }
                             });
                         } else {
@@ -399,6 +406,7 @@ public class GUI extends javax.swing.JFrame {
                     public void run() {
                         jProgressBar1.setVisible(false);
                         originalSongs = new ArrayList<>(songs);
+                        jTextField1.setText("Playlist size...");
                         updateOutputArea();
                     }
                 });
