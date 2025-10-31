@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Comparator;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import javax.swing.SwingUtilities;
 
 /**
  *
@@ -20,7 +19,6 @@ public class GUI extends javax.swing.JFrame {
     private java.util.List<Song> songs;
     private List<Song> originalSongs;
     private String workoutType;
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GUI.class.getName());
 
     /**
      * Creates new form GUI
@@ -61,6 +59,8 @@ public class GUI extends javax.swing.JFrame {
         SortAscBPMButton = new javax.swing.JButton();
         randomSongButton = new javax.swing.JButton();
         searchSongButton = new javax.swing.JButton();
+        SortAscDurButton = new javax.swing.JButton();
+        SortDescDurButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 0, 51));
@@ -72,11 +72,6 @@ public class GUI extends javax.swing.JFrame {
 
         workoutSelectComboBox.setFont(new java.awt.Font("Perpetua", 0, 12)); // NOI18N
         workoutSelectComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        workoutSelectComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                workoutSelectComboBoxActionPerformed(evt);
-            }
-        });
 
         playlistGeneratorButton.setText("Generate Playlist");
         playlistGeneratorButton.setName("playlistGenerateButton"); // NOI18N
@@ -143,6 +138,7 @@ public class GUI extends javax.swing.JFrame {
         });
 
         SortDescBPMButton.setText("Sort by Desc. BPM");
+        SortDescBPMButton.setPreferredSize(new java.awt.Dimension(152, 27));
         SortDescBPMButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SortDescBPMButtonActionPerformed(evt);
@@ -164,6 +160,7 @@ public class GUI extends javax.swing.JFrame {
         });
 
         SortAscBPMButton.setText("Sort by Asc. BPM");
+        SortAscBPMButton.setPreferredSize(new java.awt.Dimension(152, 27));
         SortAscBPMButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SortAscBPMButtonActionPerformed(evt);
@@ -185,6 +182,21 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        SortAscDurButton.setText("Sort by Asc. Duration");
+        SortAscDurButton.setPreferredSize(new java.awt.Dimension(152, 27));
+        SortAscDurButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SortAscDurButtonActionPerformed(evt);
+            }
+        });
+
+        SortDescDurButton.setText("Sort by Desc. Duration");
+        SortDescDurButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SortDescDurButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -203,23 +215,27 @@ public class GUI extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(playlistGeneratorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(SortZAButton)
                                         .addGap(18, 18, 18)
                                         .addComponent(SortDescPopButton, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(SortDescBPMButton, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(clearButton))
+                                        .addComponent(SortDescBPMButton, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(SortAZButton)
                                         .addGap(18, 18, 18)
                                         .addComponent(SortAscPopButton, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(SortAscBPMButton, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(191, 191, 191)
-                                        .addComponent(saveToTxtButton, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(SortAscBPMButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(SortAscDurButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(SortDescDurButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(saveToTxtButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(clearButton, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addGap(192, 192, 192)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(loadFromTxtButton, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -229,7 +245,7 @@ public class GUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(randomSongButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(randomSongButton, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
                             .addComponent(searchSongButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -256,16 +272,19 @@ public class GUI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(SortAZButton)
-                    .addComponent(SortAscPopButton)
-                    .addComponent(SortAscBPMButton)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(SortAscPopButton)
+                        .addComponent(SortAscBPMButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(SortAscDurButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(saveToTxtButton)
                     .addComponent(loadFromTxtButton))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(SortDescPopButton)
-                        .addComponent(SortDescBPMButton)
-                        .addComponent(SortZAButton))
+                        .addComponent(SortDescBPMButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(SortZAButton)
+                        .addComponent(SortDescDurButton))
                     .addComponent(SortUndoButton)
                     .addComponent(clearButton))
                 .addContainerGap(15, Short.MAX_VALUE))
@@ -273,10 +292,6 @@ public class GUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void workoutSelectComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_workoutSelectComboBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_workoutSelectComboBoxActionPerformed
     // Playlist generating
     private void playlistGeneratorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playlistGeneratorButtonActionPerformed
 
@@ -392,7 +407,7 @@ public class GUI extends javax.swing.JFrame {
         }).start();
 
     }//GEN-LAST:event_playlistGeneratorButtonActionPerformed
-        
+
     private void jTextField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MouseClicked
         jTextField1.setText("");
     }//GEN-LAST:event_jTextField1MouseClicked
@@ -464,7 +479,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_saveToTxtButtonActionPerformed
     /////// Load from TXT ////////
     private void loadFromTxtButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadFromTxtButtonActionPerformed
-        /*//if (workoutType == null || workoutType.isEmpty()) {
+            /*//if (workoutType == null || workoutType.isEmpty()) {
             //javax.swing.JOptionPane.showMessageDialog(this, "No workout type selected!", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
           //  return;
         String filename = javax.swing.JOptionPane.showInputDialog(
@@ -640,6 +655,34 @@ public class GUI extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_searchSongButtonActionPerformed
+    // Asc duration sort
+    private void SortAscDurButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SortAscDurButtonActionPerformed
+        if (songs != null && !songs.isEmpty()) {
+            songs.sort(new Comparator<Song>() {
+                @Override
+                public int compare(Song s1, Song s2) {
+                    return Double.compare(s1.getDuration(), s2.getDuration());
+                }
+            });
+            updateOutputArea();
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "Nothing to sort!", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_SortAscDurButtonActionPerformed
+    // Desc duration sort
+    private void SortDescDurButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SortDescDurButtonActionPerformed
+        if (songs != null && !songs.isEmpty()) {
+            songs.sort(new Comparator<Song>() {
+                @Override
+                public int compare(Song s1, Song s2) {
+                    return Double.compare(s2.getDuration(), s1.getDuration());
+                }
+            });
+            updateOutputArea();
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "Nothing to sort!", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_SortDescDurButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -692,8 +735,10 @@ public class GUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton SortAZButton;
     private javax.swing.JButton SortAscBPMButton;
+    private javax.swing.JButton SortAscDurButton;
     private javax.swing.JButton SortAscPopButton;
     private javax.swing.JButton SortDescBPMButton;
+    private javax.swing.JButton SortDescDurButton;
     private javax.swing.JButton SortDescPopButton;
     private javax.swing.JButton SortUndoButton;
     private javax.swing.JButton SortZAButton;

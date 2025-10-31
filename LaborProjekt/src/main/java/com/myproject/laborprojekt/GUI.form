@@ -41,25 +41,31 @@
                               <Component id="playlistGeneratorButton" min="-2" pref="191" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
                                       <Component id="SortZAButton" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="SortDescPopButton" min="-2" pref="193" max="-2" attributes="0"/>
-                                      <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                                      <Component id="SortDescBPMButton" min="-2" pref="140" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="clearButton" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                      <Component id="SortDescBPMButton" min="-2" pref="152" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <Component id="SortAZButton" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
                                       <Component id="SortAscPopButton" min="-2" pref="193" max="-2" attributes="0"/>
-                                      <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                                      <Component id="SortAscBPMButton" min="-2" pref="140" max="-2" attributes="0"/>
-                                      <EmptySpace min="191" pref="191" max="-2" attributes="0"/>
-                                      <Component id="saveToTxtButton" min="-2" pref="185" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                      <Component id="SortAscBPMButton" min="-2" max="-2" attributes="0"/>
                                   </Group>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="SortAscDurButton" max="32767" attributes="0"/>
+                                  <Component id="SortDescDurButton" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="saveToTxtButton" alignment="1" min="-2" pref="185" max="-2" attributes="0"/>
+                                  <Component id="clearButton" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="192" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -74,7 +80,7 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jProgressBar1" max="32767" attributes="0"/>
-                          <Component id="randomSongButton" max="32767" attributes="0"/>
+                          <Component id="randomSongButton" pref="232" max="32767" attributes="0"/>
                           <Component id="searchSongButton" alignment="1" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -111,8 +117,11 @@
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="SortAZButton" min="-2" max="-2" attributes="0"/>
-                  <Component id="SortAscPopButton" min="-2" max="-2" attributes="0"/>
-                  <Component id="SortAscBPMButton" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="SortAscPopButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="SortAscBPMButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="SortAscDurButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <Component id="saveToTxtButton" min="-2" max="-2" attributes="0"/>
                   <Component id="loadFromTxtButton" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -122,6 +131,7 @@
                       <Component id="SortDescPopButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="SortDescBPMButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="SortZAButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="SortDescDurButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="SortUndoButton" min="-2" max="-2" attributes="0"/>
                   <Component id="clearButton" min="-2" max="-2" attributes="0"/>
@@ -161,9 +171,6 @@
           </StringArray>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="workoutSelectComboBoxActionPerformed"/>
-      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
@@ -260,6 +267,9 @@
     <Component class="javax.swing.JButton" name="SortDescBPMButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Sort by Desc. BPM"/>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[152, 27]"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SortDescBPMButtonActionPerformed"/>
@@ -284,6 +294,9 @@
     <Component class="javax.swing.JButton" name="SortAscBPMButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Sort by Asc. BPM"/>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[152, 27]"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SortAscBPMButtonActionPerformed"/>
@@ -304,6 +317,25 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchSongButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="SortAscDurButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Sort by Asc. Duration"/>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[152, 27]"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SortAscDurButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="SortDescDurButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Sort by Desc. Duration"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SortDescDurButtonActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
