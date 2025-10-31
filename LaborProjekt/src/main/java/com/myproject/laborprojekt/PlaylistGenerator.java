@@ -15,24 +15,24 @@ public class PlaylistGenerator {
 
         switch (type) {
             case RUNNING:
-                minTempo = 125;
-                maxTempo = 135;
+                minTempo = 120;
+                maxTempo = 140;
                 break;
             case HIIT:
-                minTempo = 165;
-                maxTempo = 175;
+                minTempo = 160;
+                maxTempo = 180;
                 break;
             case CARDIO:
-                minTempo = 115;
-                maxTempo = 125;
+                minTempo = 110;
+                maxTempo = 130;
                 break;
             case YOGA:
-                minTempo = 75;
-                maxTempo = 85;
+                minTempo = 60;
+                maxTempo = 80;
                 break;
             case WEIGHTLIFTING:
-                minTempo = 105;
-                maxTempo = 115;
+                minTempo = 130;
+                maxTempo = 140;
                 break;
             default:
                 minTempo = 100;

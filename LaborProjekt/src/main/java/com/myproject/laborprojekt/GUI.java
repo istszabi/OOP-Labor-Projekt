@@ -330,7 +330,7 @@ public class GUI extends javax.swing.JFrame {
                         maxTempo = 140;
                         break;
                     case "HIIT":
-                        minTempo = 140;
+                        minTempo = 160;
                         maxTempo = 180;
                         break;
                     case "CARDIO":
