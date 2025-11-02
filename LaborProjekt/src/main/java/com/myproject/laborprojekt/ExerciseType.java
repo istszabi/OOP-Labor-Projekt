@@ -13,5 +13,7 @@ public enum ExerciseType {
     HIIT,
     CARDIO,
     YOGA,
-    WEIGHTLIFTING
+    WEIGHTLIFTING,
+    CYCLING,
+    DANCE
 }

@@ -34,6 +34,14 @@ public class PlaylistGenerator {
                 minTempo = 130;
                 maxTempo = 140;
                 break;
+            case CYCLING:
+                minTempo = 130;
+                maxTempo = 150;
+                break;
+            case DANCE:
+                minTempo = 120;
+                maxTempo = 160;
+                break;
             default:
                 minTempo = 100;
                 maxTempo = 120;

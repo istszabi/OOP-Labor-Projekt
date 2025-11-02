@@ -26,10 +26,10 @@ public class GUI extends javax.swing.JFrame {
     public GUI() {
         initComponents();
         workoutSelectComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{
-            "RUNNING", "HIIT", "CARDIO", "YOGA", "WEIGHTLIFTING"
+            "RUNNING (120-140)", "HIIT(160-180)", "CARDIO(110-130)", "YOGA(60-80)", "WEIGHTLIFTING(130-140)", "CYCLING(130-150)", "DANCE(120-160)"
         }));
         jProgressBar1.setVisible(false);
-        
+
     }
 
     /**
@@ -301,7 +301,7 @@ public class GUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     // Playlist generating
     private void playlistGeneratorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playlistGeneratorButtonActionPerformed
-        disableAllButtons();
+
         workoutType = (String) workoutSelectComboBox.getSelectedItem();
 
         int playlistSize;
@@ -312,6 +312,7 @@ public class GUI extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(this, "Invalid playlist size!", "Warning", javax.swing.JOptionPane.ERROR_MESSAGE);
             return;
         }
+        disableAllButtons();
         jTextArea1.setText("Loading playlist...");
         jProgressBar1.setVisible(true);
         jProgressBar1.setMinimum(0);
@@ -346,6 +347,14 @@ public class GUI extends javax.swing.JFrame {
                         minTempo = 130;
                         maxTempo = 140;
                         break;
+                    case "CYCLING":
+                        minTempo = 130;
+                        maxTempo = 150;
+                        break;
+                    case "DANCE":
+                        minTempo = 120;
+                        maxTempo = 160;
+                        break;
                     default:
                         minTempo = 100;
                         maxTempo = 120;
@@ -378,7 +387,7 @@ public class GUI extends javax.swing.JFrame {
                                 @Override
                                 public void run() {
                                     jProgressBar1.setValue(loadingBarProgress);
-                                     jTextArea1.setText("Loading playlist... " + loadingBarProgress + "/" + playlistSize);
+                                    jTextArea1.setText("Loading playlist... " + loadingBarProgress + "/" + playlistSize);
                                 }
                             });
                         } else {
@@ -696,38 +705,40 @@ public class GUI extends javax.swing.JFrame {
     // Disable buttons
     private void disableAllButtons() {
         playlistGeneratorButton.setEnabled(false);
-        sortAZButton.setEnabled(false); 
-        sortDescPopularityButton.setEnabled(false); 
-        sortUndoButton.setEnabled(false); 
-        clearButton.setEnabled(false); 
-        saveToTxtButton.setEnabled(false); 
-        loadFromTxtButton.setEnabled(false); 
-        sortDescBPMButton.setEnabled(false); 
+        sortAZButton.setEnabled(false);
+        sortDescPopularityButton.setEnabled(false);
+        sortUndoButton.setEnabled(false);
+        clearButton.setEnabled(false);
+        saveToTxtButton.setEnabled(false);
+        loadFromTxtButton.setEnabled(false);
+        sortDescBPMButton.setEnabled(false);
         sortZAButton.setEnabled(false);
         sortAscPopularityButton.setEnabled(false);
         sortAscBPMButton.setEnabled(false);
         randomSongButton.setEnabled(false);
-        searchSongButton.setEnabled(false); 
+        searchSongButton.setEnabled(false);
         sortAscDurationButton.setEnabled(false);
         sortDescDurationButton.setEnabled(false);
     }
+
     // Enable buttons
     private void enableAllButtons() {
         playlistGeneratorButton.setEnabled(true);
-        sortAZButton.setEnabled(true); 
-        sortDescPopularityButton.setEnabled(true); 
-        sortUndoButton.setEnabled(true); 
-        clearButton.setEnabled(true); 
-        saveToTxtButton.setEnabled(true); 
-        sortDescBPMButton.setEnabled(true); 
+        sortAZButton.setEnabled(true);
+        sortDescPopularityButton.setEnabled(true);
+        sortUndoButton.setEnabled(true);
+        clearButton.setEnabled(true);
+        saveToTxtButton.setEnabled(true);
+        sortDescBPMButton.setEnabled(true);
         sortZAButton.setEnabled(true);
         sortAscPopularityButton.setEnabled(true);
         sortAscBPMButton.setEnabled(true);
         randomSongButton.setEnabled(true);
-        searchSongButton.setEnabled(true); 
+        searchSongButton.setEnabled(true);
         sortAscDurationButton.setEnabled(true);
         sortDescDurationButton.setEnabled(true);
     }
+
     /**
      * @param args the command line arguments
      */
