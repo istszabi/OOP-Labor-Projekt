@@ -48,20 +48,20 @@ public class GUI extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jTextField1 = new javax.swing.JTextField();
-        SortAZButton = new javax.swing.JButton();
-        SortDescPopButton = new javax.swing.JButton();
-        SortUndoButton = new javax.swing.JButton();
+        sortAZButton = new javax.swing.JButton();
+        sortDescPopularityButton = new javax.swing.JButton();
+        sortUndoButton = new javax.swing.JButton();
         clearButton = new javax.swing.JButton();
         saveToTxtButton = new javax.swing.JButton();
         loadFromTxtButton = new javax.swing.JButton();
-        SortDescBPMButton = new javax.swing.JButton();
-        SortZAButton = new javax.swing.JButton();
-        SortAscPopButton = new javax.swing.JButton();
-        SortAscBPMButton = new javax.swing.JButton();
+        sortDescBPMButton = new javax.swing.JButton();
+        sortZAButton = new javax.swing.JButton();
+        sortAscPopularityButton = new javax.swing.JButton();
+        sortAscBPMButton = new javax.swing.JButton();
         randomSongButton = new javax.swing.JButton();
         searchSongButton = new javax.swing.JButton();
-        SortAscDurButton = new javax.swing.JButton();
-        SortDescDurButton = new javax.swing.JButton();
+        sortAscDurationButton = new javax.swing.JButton();
+        sortDescDurationButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -96,24 +96,24 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        SortAZButton.setText("Sort A-Z");
-        SortAZButton.addActionListener(new java.awt.event.ActionListener() {
+        sortAZButton.setText("Sort A-Z");
+        sortAZButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SortAZButtonActionPerformed(evt);
+                sortAZButtonActionPerformed(evt);
             }
         });
 
-        SortDescPopButton.setText("Sort by Desc. Popularity");
-        SortDescPopButton.addActionListener(new java.awt.event.ActionListener() {
+        sortDescPopularityButton.setText("Sort by Desc. Popularity");
+        sortDescPopularityButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SortDescPopButtonActionPerformed(evt);
+                sortDescPopularityButtonActionPerformed(evt);
             }
         });
 
-        SortUndoButton.setText("Undo Sorting");
-        SortUndoButton.addActionListener(new java.awt.event.ActionListener() {
+        sortUndoButton.setText("Undo Sorting");
+        sortUndoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SortUndoButtonActionPerformed(evt);
+                sortUndoButtonActionPerformed(evt);
             }
         });
 
@@ -133,39 +133,40 @@ public class GUI extends javax.swing.JFrame {
         });
 
         loadFromTxtButton.setText("Load from TXT");
+        loadFromTxtButton.setEnabled(false);
         loadFromTxtButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loadFromTxtButtonActionPerformed(evt);
             }
         });
 
-        SortDescBPMButton.setText("Sort by Desc. BPM");
-        SortDescBPMButton.setPreferredSize(new java.awt.Dimension(152, 27));
-        SortDescBPMButton.addActionListener(new java.awt.event.ActionListener() {
+        sortDescBPMButton.setText("Sort by Desc. BPM");
+        sortDescBPMButton.setPreferredSize(new java.awt.Dimension(152, 27));
+        sortDescBPMButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SortDescBPMButtonActionPerformed(evt);
+                sortDescBPMButtonActionPerformed(evt);
             }
         });
 
-        SortZAButton.setText("Sort Z-A");
-        SortZAButton.addActionListener(new java.awt.event.ActionListener() {
+        sortZAButton.setText("Sort Z-A");
+        sortZAButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SortZAButtonActionPerformed(evt);
+                sortZAButtonActionPerformed(evt);
             }
         });
 
-        SortAscPopButton.setText("Sort by Asc. Popularity");
-        SortAscPopButton.addActionListener(new java.awt.event.ActionListener() {
+        sortAscPopularityButton.setText("Sort by Asc. Popularity");
+        sortAscPopularityButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SortAscPopButtonActionPerformed(evt);
+                sortAscPopularityButtonActionPerformed(evt);
             }
         });
 
-        SortAscBPMButton.setText("Sort by Asc. BPM");
-        SortAscBPMButton.setPreferredSize(new java.awt.Dimension(152, 27));
-        SortAscBPMButton.addActionListener(new java.awt.event.ActionListener() {
+        sortAscBPMButton.setText("Sort by Asc. BPM");
+        sortAscBPMButton.setPreferredSize(new java.awt.Dimension(152, 27));
+        sortAscBPMButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SortAscBPMButtonActionPerformed(evt);
+                sortAscBPMButtonActionPerformed(evt);
             }
         });
 
@@ -186,20 +187,20 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        SortAscDurButton.setText("Sort by Asc. Duration");
-        SortAscDurButton.setMaximumSize(new java.awt.Dimension(152, 27));
-        SortAscDurButton.setMinimumSize(new java.awt.Dimension(152, 27));
-        SortAscDurButton.setPreferredSize(new java.awt.Dimension(152, 27));
-        SortAscDurButton.addActionListener(new java.awt.event.ActionListener() {
+        sortAscDurationButton.setText("Sort by Asc. Duration");
+        sortAscDurationButton.setMaximumSize(new java.awt.Dimension(152, 27));
+        sortAscDurationButton.setMinimumSize(new java.awt.Dimension(152, 27));
+        sortAscDurationButton.setPreferredSize(new java.awt.Dimension(152, 27));
+        sortAscDurationButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SortAscDurButtonActionPerformed(evt);
+                sortAscDurationButtonActionPerformed(evt);
             }
         });
 
-        SortDescDurButton.setText("Sort by Desc. Duration");
-        SortDescDurButton.addActionListener(new java.awt.event.ActionListener() {
+        sortDescDurationButton.setText("Sort by Desc. Duration");
+        sortDescDurationButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SortDescDurButtonActionPerformed(evt);
+                sortDescDurationButtonActionPerformed(evt);
             }
         });
 
@@ -223,21 +224,21 @@ public class GUI extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(SortZAButton)
+                                        .addComponent(sortZAButton)
                                         .addGap(18, 18, 18)
-                                        .addComponent(SortDescPopButton, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(sortDescPopularityButton, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(SortDescBPMButton, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(sortDescBPMButton, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(SortAZButton)
+                                        .addComponent(sortAZButton)
                                         .addGap(18, 18, 18)
-                                        .addComponent(SortAscPopButton, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(sortAscPopularityButton, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(SortAscBPMButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(sortAscBPMButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(SortDescDurButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(SortAscDurButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(sortDescDurationButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(sortAscDurationButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(saveToTxtButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -245,7 +246,7 @@ public class GUI extends javax.swing.JFrame {
                                 .addGap(192, 192, 192)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(loadFromTxtButton, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(SortUndoButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(sortUndoButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 941, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -264,7 +265,7 @@ public class GUI extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(workoutSelectComboBox)
-                                .addComponent(jTextField1)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
                                 .addComponent(playlistGeneratorButton)
                                 .addComponent(searchSongButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -277,21 +278,21 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(SortAZButton)
+                    .addComponent(sortAZButton)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(SortAscPopButton)
-                        .addComponent(SortAscBPMButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(SortAscDurButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(sortAscPopularityButton)
+                        .addComponent(sortAscBPMButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(sortAscDurationButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(saveToTxtButton)
                     .addComponent(loadFromTxtButton))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(SortDescPopButton)
-                        .addComponent(SortDescBPMButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(SortZAButton)
-                        .addComponent(SortDescDurButton))
-                    .addComponent(SortUndoButton)
+                        .addComponent(sortDescPopularityButton)
+                        .addComponent(sortDescBPMButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(sortZAButton)
+                        .addComponent(sortDescDurationButton))
+                    .addComponent(sortUndoButton)
                     .addComponent(clearButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -300,13 +301,13 @@ public class GUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     // Playlist generating
     private void playlistGeneratorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playlistGeneratorButtonActionPerformed
-
+        disableAllButtons();
         workoutType = (String) workoutSelectComboBox.getSelectedItem();
 
-        int size;
+        int playlistSize;
 
         try {
-            size = Integer.parseInt(jTextField1.getText());
+            playlistSize = Integer.parseInt(jTextField1.getText());
         } catch (NumberFormatException e) {
             javax.swing.JOptionPane.showMessageDialog(this, "Invalid playlist size!", "Warning", javax.swing.JOptionPane.ERROR_MESSAGE);
             return;
@@ -314,7 +315,7 @@ public class GUI extends javax.swing.JFrame {
         jTextArea1.setText("Loading playlist...");
         jProgressBar1.setVisible(true);
         jProgressBar1.setMinimum(0);
-        jProgressBar1.setMaximum(size);
+        jProgressBar1.setMaximum(playlistSize);
         jProgressBar1.setValue(0);
 
         new Thread(new Runnable() {
@@ -353,7 +354,7 @@ public class GUI extends javax.swing.JFrame {
 
                 songs = new ArrayList<>();
 
-                for (int i = 0; i < size; i++) {
+                for (int i = 0; i < playlistSize; i++) {
                     double targetTempo = minTempo + Math.random() * (maxTempo - minTempo);
                     List<Song> newSongs = ApiService.getSongsByTempo(targetTempo, List.of(seed), 1);
 
@@ -372,12 +373,12 @@ public class GUI extends javax.swing.JFrame {
                             songs.add(candidate);
 
                             // progress bar 
-                            final int progress = songs.size();
+                            final int loadingBarProgress = songs.size();
                             javax.swing.SwingUtilities.invokeLater(new Runnable() {
                                 @Override
                                 public void run() {
-                                    jProgressBar1.setValue(progress);
-                                     jTextArea1.setText("Loading playlist... " + progress + "/" + size);
+                                    jProgressBar1.setValue(loadingBarProgress);
+                                     jTextArea1.setText("Loading playlist... " + loadingBarProgress + "/" + playlistSize);
                                 }
                             });
                         } else {
@@ -408,6 +409,7 @@ public class GUI extends javax.swing.JFrame {
                         originalSongs = new ArrayList<>(songs);
                         jTextField1.setText("Playlist size...");
                         updateOutputArea();
+                        enableAllButtons();
                     }
                 });
 
@@ -415,12 +417,12 @@ public class GUI extends javax.swing.JFrame {
         }).start();
 
     }//GEN-LAST:event_playlistGeneratorButtonActionPerformed
-
+    // Playlist size textfield
     private void jTextField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MouseClicked
         jTextField1.setText("");
     }//GEN-LAST:event_jTextField1MouseClicked
     // A-Z Sort
-    private void SortAZButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SortAZButtonActionPerformed
+    private void sortAZButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortAZButtonActionPerformed
         if (songs != null && !songs.isEmpty()) {
             songs.sort(new Comparator<Song>() {
                 @Override
@@ -432,9 +434,9 @@ public class GUI extends javax.swing.JFrame {
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "Nothing to sort!", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_SortAZButtonActionPerformed
+    }//GEN-LAST:event_sortAZButtonActionPerformed
     // Popularity sort Desc.
-    private void SortDescPopButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SortDescPopButtonActionPerformed
+    private void sortDescPopularityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortDescPopularityButtonActionPerformed
         if (songs != null && !songs.isEmpty()) {
             songs.sort(new Comparator<Song>() {
                 @Override
@@ -446,16 +448,16 @@ public class GUI extends javax.swing.JFrame {
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "Nothing to sort!", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_SortDescPopButtonActionPerformed
+    }//GEN-LAST:event_sortDescPopularityButtonActionPerformed
     // Undo sorting
-    private void SortUndoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SortUndoButtonActionPerformed
+    private void sortUndoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortUndoButtonActionPerformed
         if (originalSongs == null || originalSongs.isEmpty()) {
             javax.swing.JOptionPane.showMessageDialog(this, "Nothing to undo!", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
             return;
         }
         songs = new ArrayList<>(originalSongs);
         updateOutputArea();
-    }//GEN-LAST:event_SortUndoButtonActionPerformed
+    }//GEN-LAST:event_sortUndoButtonActionPerformed
     // Clear screen
     private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
         if (songs == null || songs.isEmpty()) {
@@ -485,11 +487,11 @@ public class GUI extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(this, "Error saving playlist: " + ex.getMessage(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_saveToTxtButtonActionPerformed
-    /////// Load from TXT ////////
+    /////// !Load from TXT! ////////
     private void loadFromTxtButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadFromTxtButtonActionPerformed
-            /*//if (workoutType == null || workoutType.isEmpty()) {
-            //javax.swing.JOptionPane.showMessageDialog(this, "No workout type selected!", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-          //  return;
+            /*if (workoutType == null || workoutType.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "No workout type selected!", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+           return;
         String filename = javax.swing.JOptionPane.showInputDialog(
             this,
             "Enter filename to load:",
@@ -508,7 +510,7 @@ public class GUI extends javax.swing.JFrame {
 }*/
     }//GEN-LAST:event_loadFromTxtButtonActionPerformed
     // Desc BPM sort //
-    private void SortDescBPMButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SortDescBPMButtonActionPerformed
+    private void sortDescBPMButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortDescBPMButtonActionPerformed
         if (songs == null || songs.isEmpty()) {
             javax.swing.JOptionPane.showMessageDialog(this, "Nothing to sort!", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
             return;
@@ -522,9 +524,9 @@ public class GUI extends javax.swing.JFrame {
         });
 
         updateOutputArea();
-    }//GEN-LAST:event_SortDescBPMButtonActionPerformed
+    }//GEN-LAST:event_sortDescBPMButtonActionPerformed
     // Asc BPM sort //
-    private void SortAscBPMButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SortAscBPMButtonActionPerformed
+    private void sortAscBPMButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortAscBPMButtonActionPerformed
         if (songs == null || songs.isEmpty()) {
             javax.swing.JOptionPane.showMessageDialog(this, "Nothing to sort!", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
             return;
@@ -538,9 +540,9 @@ public class GUI extends javax.swing.JFrame {
         });
 
         updateOutputArea();
-    }//GEN-LAST:event_SortAscBPMButtonActionPerformed
+    }//GEN-LAST:event_sortAscBPMButtonActionPerformed
     // Popularity sort Asc. // 
-    private void SortAscPopButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SortAscPopButtonActionPerformed
+    private void sortAscPopularityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortAscPopularityButtonActionPerformed
         if (songs != null && !songs.isEmpty()) {
             songs.sort(new Comparator<Song>() {
                 @Override
@@ -552,9 +554,9 @@ public class GUI extends javax.swing.JFrame {
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "Nothing to sort!", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_SortAscPopButtonActionPerformed
+    }//GEN-LAST:event_sortAscPopularityButtonActionPerformed
     // Z-A Sort
-    private void SortZAButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SortZAButtonActionPerformed
+    private void sortZAButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortZAButtonActionPerformed
         if (songs != null && !songs.isEmpty()) {
             songs.sort(new Comparator<Song>() {
                 @Override
@@ -566,7 +568,7 @@ public class GUI extends javax.swing.JFrame {
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "Nothing to sort!", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_SortZAButtonActionPerformed
+    }//GEN-LAST:event_sortZAButtonActionPerformed
     // Random Song
     private void randomSongButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_randomSongButtonActionPerformed
         if (songs == null || songs.isEmpty()) {
@@ -664,7 +666,7 @@ public class GUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_searchSongButtonActionPerformed
     // Asc duration sort
-    private void SortAscDurButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SortAscDurButtonActionPerformed
+    private void sortAscDurationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortAscDurationButtonActionPerformed
         if (songs != null && !songs.isEmpty()) {
             songs.sort(new Comparator<Song>() {
                 @Override
@@ -676,9 +678,9 @@ public class GUI extends javax.swing.JFrame {
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "Nothing to sort!", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_SortAscDurButtonActionPerformed
+    }//GEN-LAST:event_sortAscDurationButtonActionPerformed
     // Desc duration sort
-    private void SortDescDurButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SortDescDurButtonActionPerformed
+    private void sortDescDurationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortDescDurationButtonActionPerformed
         if (songs != null && !songs.isEmpty()) {
             songs.sort(new Comparator<Song>() {
                 @Override
@@ -690,8 +692,42 @@ public class GUI extends javax.swing.JFrame {
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "Nothing to sort!", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_SortDescDurButtonActionPerformed
-
+    }//GEN-LAST:event_sortDescDurationButtonActionPerformed
+    // Disable buttons
+    private void disableAllButtons() {
+        playlistGeneratorButton.setEnabled(false);
+        sortAZButton.setEnabled(false); 
+        sortDescPopularityButton.setEnabled(false); 
+        sortUndoButton.setEnabled(false); 
+        clearButton.setEnabled(false); 
+        saveToTxtButton.setEnabled(false); 
+        loadFromTxtButton.setEnabled(false); 
+        sortDescBPMButton.setEnabled(false); 
+        sortZAButton.setEnabled(false);
+        sortAscPopularityButton.setEnabled(false);
+        sortAscBPMButton.setEnabled(false);
+        randomSongButton.setEnabled(false);
+        searchSongButton.setEnabled(false); 
+        sortAscDurationButton.setEnabled(false);
+        sortDescDurationButton.setEnabled(false);
+    }
+    // Enable buttons
+    private void enableAllButtons() {
+        playlistGeneratorButton.setEnabled(true);
+        sortAZButton.setEnabled(true); 
+        sortDescPopularityButton.setEnabled(true); 
+        sortUndoButton.setEnabled(true); 
+        clearButton.setEnabled(true); 
+        saveToTxtButton.setEnabled(true); 
+        sortDescBPMButton.setEnabled(true); 
+        sortZAButton.setEnabled(true);
+        sortAscPopularityButton.setEnabled(true);
+        sortAscBPMButton.setEnabled(true);
+        randomSongButton.setEnabled(true);
+        searchSongButton.setEnabled(true); 
+        sortAscDurationButton.setEnabled(true);
+        sortDescDurationButton.setEnabled(true);
+    }
     /**
      * @param args the command line arguments
      */
@@ -741,15 +777,6 @@ public class GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton SortAZButton;
-    private javax.swing.JButton SortAscBPMButton;
-    private javax.swing.JButton SortAscDurButton;
-    private javax.swing.JButton SortAscPopButton;
-    private javax.swing.JButton SortDescBPMButton;
-    private javax.swing.JButton SortDescDurButton;
-    private javax.swing.JButton SortDescPopButton;
-    private javax.swing.JButton SortUndoButton;
-    private javax.swing.JButton SortZAButton;
     private javax.swing.JButton clearButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JProgressBar jProgressBar1;
@@ -761,6 +788,15 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton randomSongButton;
     private javax.swing.JButton saveToTxtButton;
     private javax.swing.JButton searchSongButton;
+    private javax.swing.JButton sortAZButton;
+    private javax.swing.JButton sortAscBPMButton;
+    private javax.swing.JButton sortAscDurationButton;
+    private javax.swing.JButton sortAscPopularityButton;
+    private javax.swing.JButton sortDescBPMButton;
+    private javax.swing.JButton sortDescDurationButton;
+    private javax.swing.JButton sortDescPopularityButton;
+    private javax.swing.JButton sortUndoButton;
+    private javax.swing.JButton sortZAButton;
     private javax.swing.JComboBox<String> workoutSelectComboBox;
     // End of variables declaration//GEN-END:variables
 }
