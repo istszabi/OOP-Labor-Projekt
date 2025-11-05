@@ -31,7 +31,7 @@ public class Playlist {
     public List<Song> getSongs() {
         return songs;
     }
-
+    // Playlist output to console
     public void PrintAll() {
         System.out.println("Playlist:" + name);
         for (int i = 0; i < songs.size(); i++) {

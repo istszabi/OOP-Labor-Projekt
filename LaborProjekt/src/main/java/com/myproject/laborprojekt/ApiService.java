@@ -41,6 +41,7 @@ public class ApiService {
                 // DURATION call
                 float duration = trackObject.has("durationMs") ? (float)(trackObject.get("durationMs").getAsDouble() / 60000) : 0;
                 
+                // Add song to playlist
                 
                 songs.add(new Song(null, title, artist, duration, songTempo, popularity));
             }
