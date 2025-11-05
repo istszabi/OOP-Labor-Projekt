@@ -720,7 +720,6 @@ public class GUI extends javax.swing.JFrame {
         sortAscDurationButton.setEnabled(false);
         sortDescDurationButton.setEnabled(false);
     }
-
     // Enable buttons
     private void enableAllButtons() {
         playlistGeneratorButton.setEnabled(true);
@@ -742,6 +741,7 @@ public class GUI extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    // Output update //
     private void updateOutputArea() {
         String text = "=== " + workoutType + " Playlist ===\n\n";
         for (int i = 0; i < songs.size(); i++) {
@@ -752,7 +752,7 @@ public class GUI extends javax.swing.JFrame {
         jTextArea1.setCaretPosition(0);
 
     }
-
+    // Save playlist to TXT
     private void savePlaylistToFile(String workoutType, List<Song> songs) throws Exception {
         if (songs == null || songs.isEmpty()) {
             return;

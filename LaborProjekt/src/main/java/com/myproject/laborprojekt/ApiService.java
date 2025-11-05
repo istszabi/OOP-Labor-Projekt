@@ -15,7 +15,9 @@ public class ApiService {
     public static List<Song> getSongsByTempo(double tempo, List<String> seeds, int size) {
         List<Song> songs = new ArrayList<>();
         try {
+            // API URL
             String url = API_URL + "?tempo=" + tempo + "&size=" + size + "&seeds=" + String.join(",", seeds);
+            
             String body = Unirest.get(url).asString().getBody();
             JsonArray content = JsonParser.parseString(body).getAsJsonObject().getAsJsonArray("content");
 
@@ -25,15 +27,21 @@ public class ApiService {
                 String title = trackObject.has("trackTitle") ? trackObject.get("trackTitle").getAsString() : "Unknown Title";
 
                 String artist = "Unknown Artist";
+                // ARTIST call
                 if (trackObject.has("artists") && trackObject.getAsJsonArray("artists").size() > 0) {
                     try { 
                         artist = trackObject.getAsJsonArray("artists").get(0).getAsJsonObject().get("name").getAsString(); } catch(Exception ignored) {}
                 }
-
+                // TEMPO call
                 double songTempo = trackObject.has("tempo") ? trackObject.get("tempo").getAsDouble() : tempo;
+                
+                // POPULARITY call
                 int popularity = trackObject.has("popularity") ? trackObject.get("popularity").getAsInt() : 50;
+                
+                // DURATION call
                 float duration = trackObject.has("durationMs") ? (float)(trackObject.get("durationMs").getAsDouble() / 60000) : 0;
-
+                
+                
                 songs.add(new Song(null, title, artist, duration, songTempo, popularity));
             }
 
