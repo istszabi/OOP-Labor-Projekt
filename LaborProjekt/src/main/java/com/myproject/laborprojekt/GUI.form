@@ -85,6 +85,8 @@
                           <Component id="jProgressBar1" max="32767" attributes="0"/>
                           <Component id="randomSongButton" pref="232" max="32767" attributes="0"/>
                           <Component id="searchSongButton" alignment="1" max="32767" attributes="0"/>
+                          <Component id="searchSongonYTButton" alignment="0" max="32767" attributes="0"/>
+                          <Component id="selectSongToSearchOnYTButton" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -95,49 +97,52 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="workoutSelectComboBox" alignment="3" max="32767" attributes="0"/>
+                      <Component id="jTextField1" alignment="3" pref="27" max="32767" attributes="0"/>
+                      <Component id="playlistGeneratorButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="searchSongButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="jLabel1" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="jScrollPane1" min="-2" pref="175" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="sortAZButton" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="workoutSelectComboBox" alignment="3" max="32767" attributes="0"/>
-                              <Component id="jTextField1" alignment="3" pref="27" max="32767" attributes="0"/>
-                              <Component id="playlistGeneratorButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="searchSongButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="sortAscPopularityButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="sortAscBPMButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="sortAscDurationButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jLabel1" max="32767" attributes="0"/>
+                          <Component id="saveToTxtButton" min="-2" max="-2" attributes="0"/>
+                          <Component id="loadFromTxtButton" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                              <Component id="sortDescPopularityButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="sortDescBPMButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="sortZAButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="sortDescDurationButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="sortUndoButton" min="-2" max="-2" attributes="0"/>
+                          <Component id="clearButton" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="selectSongToSearchOnYTButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                      <Component id="searchSongonYTButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="jProgressBar1" min="-2" pref="27" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="randomSongButton" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="175" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="sortAZButton" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="sortAscPopularityButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="sortAscBPMButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="sortAscDurationButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="saveToTxtButton" min="-2" max="-2" attributes="0"/>
-                  <Component id="loadFromTxtButton" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                      <Component id="sortDescPopularityButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="sortDescBPMButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="sortZAButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="sortDescDurationButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="sortUndoButton" min="-2" max="-2" attributes="0"/>
-                  <Component id="clearButton" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -200,6 +205,9 @@
             <Property name="rows" type="int" value="5"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Text Cursor"/>
+            </Property>
+            <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
           </Properties>
         </Component>
@@ -352,6 +360,22 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sortDescDurationButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="searchSongonYTButton">
+      <Properties>
+        <Property name="label" type="java.lang.String" value="Search Song on YT"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchSongonYTButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="selectSongToSearchOnYTButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Select Song to Search on YT"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selectSongToSearchOnYTButtonActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
